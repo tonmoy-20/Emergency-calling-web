@@ -9,3 +9,9 @@ for (let i = 0; i < heartButtons.length; i++) {
     heartCountEl.innerText = heartCount;
   });
 }
+const coinCount = document.getElementById("coinCount");
+let coins = parseInt(coinCount.innerText);
+
+const callHistoryList = document.getElementById("callHistoryList");
+
+const callButtons = document.querySelectorAll(".callBtn");

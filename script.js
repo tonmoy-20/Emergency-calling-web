@@ -25,4 +25,32 @@ for (let i = 0; i < callButtons.length; i++) {
 
     const serviceName = card.querySelector(".service-name").innerText;
     const serviceNumber = card.querySelector(".phn-num").innerText;
-    
+
+    if (coins < 20) {
+      alert("❌ Not enough coins! You need at least 20 coins to make a call.");
+      return;
+    }
+
+    coins -= 20;
+    coinCount.innerText = coins;
+
+    alert("📞 Calling " + serviceName + " at " + serviceNumber);
+
+    const now = new Date();
+    const time = now.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    });
+
+    const li = document.createElement("li");
+    li.innerHTML = `<span class="font-semibold">${serviceName}</span> - ${serviceNumber} 
+      <span class="text-gray-500 text-xs ml-2">(${time})</span>`;
+    callHistoryList.appendChild(li);
+  });
+}
+
+document.getElementById("clearHistory").addEventListener("click", function () {
+  callHistoryList.innerHTML = "";
+});
